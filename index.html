@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; worker-src 'self'; connect-src 'none'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>Capacidade de Saídas de Campo</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body data-layout="visitas">
+  <a class="skip" href="#entry-form">Ir para a ferramenta</a>
+  <main data-layout-profile="capacidade-visitas-campo" data-layout="visitas">
+    <header class="task-header" data-region="task-header">
+      <div class="masthead">
+        <a href="https://lofranotecnologia.com.br/projetos" class="brand" aria-label="Projetos da LOFRANO">LOFRANO</a>
+        <span class="product-sector">Operação educacional</span>
+      </div>
+      <div class="task-title">
+        <h1>Capacidade de Saídas de Campo</h1>
+        <p>Confira assentos disponíveis e acompanhantes confirmados por deslocamento de uma saída de campo.</p>
+      </div>
+    </header>
+    <div class="workarea">
+      <section class="entry-panel" data-region="input" data-task-editor="visitas" aria-labelledby="entry-title">
+        <div class="module-heading">
+          <h2 id="entry-title">Agenda e capacidade</h2>
+          <button type="button" id="reset" class="quiet reset">Restaurar exemplo</button>
+        </div>
+        <form id="entry-form" class="editor-form" aria-labelledby="entry-title" tabindex="-1">
+          <div id="fields"></div>
+        </form>
+        <div class="entry-actions">
+          <button type="button" id="run" class="primary">Verificar capacidade</button>
+        </div>
+      </section>
+      <section class="result-panel" data-region="result" aria-labelledby="output-title">
+        <div class="result-header">
+          <div class="module-heading">
+            <h2 id="output-title">Capacidade por equipe</h2>
+            <button type="button" id="download" class="quiet export" disabled>Baixar relatório</button>
+          </div>
+          <p role="status" id="status">Compare as visitas agendadas com a capacidade prevista.</p>
+        </div>
+        <dl id="stats" aria-label="Resumo de planejamento"></dl>
+        <div id="insights" data-region="insights" data-task-insights="visitas"></div>
+        <div id="result" data-region="result-details" tabindex="0" role="region" aria-labelledby="output-title"></div>
+      </section>
+    </div>
+    <footer class="task-footer">Exemplo fictício. O processamento acontece neste navegador.</footer>
+  </main>
+  <template id="sample-data">{"rows":[{"id":"amostra-a","deslocamento":"Exemplo regra-grupoCabe 1","lugares":2,"participantes":2,"acompanhantesMinimos":11,"acompanhantesConfirmados":13},{"id":"amostra-b","deslocamento":"Exemplo regra-grupoCabe 1","lugares":2,"participantes":5,"acompanhantesMinimos":11,"acompanhantesConfirmados":13}]}</template>
+  <template id="field-config">[{"key":"rows","label":"Grupos e deslocamentos","singular":"grupo","fields":[{"key":"id","label":"Identificador","kind":"text","optional":false},{"key":"deslocamento","label":"Deslocamento","kind":"text","optional":false},{"key":"lugares","label":"Lugares","kind":"integer","optional":false},{"key":"participantes","label":"Participantes","kind":"integer","optional":false},{"key":"acompanhantesMinimos","label":"Acompanhantes necessários","kind":"integer","optional":false},{"key":"acompanhantesConfirmados","label":"Acompanhantes confirmados","kind":"integer","optional":false}],"maximum":150}]</template>
+</body>
+</html>
